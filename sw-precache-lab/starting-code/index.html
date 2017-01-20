@@ -181,6 +181,21 @@ limitations under the License.
 
   </footer>
 
-  <script src="js/index.js"></script>
+  <!--<script src="js/index.js"></script>-->
+  <script>
+	  if ('serviceWorker' in navigator) {
+		  // If it does register the ServiceWorker. By default it's scoped to /
+		  navigator.serviceWorker.register('service-worker.js')
+			  .then(function(registration) {
+				  // Log success to the console along with the scope this worker is registered to
+				  console.log('Service Worker registration successful with scope: ',
+					  registration);
+			  })
+			  .catch(function(err) {
+				  // Oh, no. Something happened
+				  console.log('Service Worker registration failed: ', err);
+			  });
+	  }
+  </script>
 </body>
 </html>

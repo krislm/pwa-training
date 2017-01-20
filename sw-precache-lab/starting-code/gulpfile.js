@@ -16,5 +16,27 @@
  */
 
 //TODO 4.1 Insert the constants to require gulp and plugins
+var gulp = require('gulp');
+var path = require('path');
+var swPrecache = require('sw-precache');
 
 //TODO 4.2 Insert the variable and gulp task code
+var paths = {
+	src: './'
+};
+
+gulp.task('service-worker', function(callback) {
+	swPrecache.write(path.join(paths.src, 'service-worker.js'), {
+		staticFileGlobs: [
+			paths.src + 'index.html',
+			paths.src + 'js/main.js',
+			paths.src + 'css/main.css'
+			// paths.src + 'images/**/*'
+		],
+		importScripts: [
+			paths.src + 'node_modules/sw-toolbox/sw-toolbox.js',
+			paths.src + 'js/toolbox-scripts.js'
+		],
+		stripPrefix: paths.src
+	}, callback);
+});

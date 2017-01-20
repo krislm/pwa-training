@@ -21,9 +21,11 @@
         <!-- TODO 1 -->
         <figure>
             <picture>
-            <source srcset="images/horses-1600_large_2x.jpg 2x,
+            <source media="(min-width: 750px)"
+                    srcset="images/horses-1600_large_2x.jpg 2x,
                             images/horses-800_large_1x.jpg" />
-            <source srcset="images/horses_medium.jpg" />
+            <source media="(min-width: 500px)"
+                    srcset="images/horses_medium.jpg" />
             <img src="images/horses_small.jpg" alt="Horses in Hawaii">
             </picture>
 
@@ -90,14 +92,27 @@
         <!-- TODO 5 -->
         <figure>
             <picture>
-            <source media="(min-width: 750px)" srcset="images/sfo-1600_large_2x.jpg 2x, images/sfo-800_large_1x.jpg" />
-            <source media="(min-width: 500px)" srcset="images/sfo_medium.jpg" />
-            <img src="images/sfo_small.jpg" alt="View from aircraft window near San Francisco airport">
+                <source media="(min-width: 750px)" srcset="images/sfo-1600_large_2x.jpg 2x, images/sfo-800_large_1x.jpg" />
+                <source media="(min-width: 500px)" srcset="images/sfo_medium.jpg" />
+                <img id="sfo" src="images/sfo_small.jpg" alt="View from aircraft window near San Francisco airport">
             </picture>
             <figcaption>Near SFO</figcaption>
         </figure>
 
         <p>Say cheese swiss cheesy grin. Cheese on toast queso bocconcini cheeseburger fondue manchego smelly cheese port-salut. Cream cheese cheese and wine airedale cheeseburger chalk and cheese cauliflower cheese fondue smelly cheese. Queso manchego.</p>
+        <figure>
+            <picture>
+                <img sizes="(max-width: 1400px) 100vw, 1400px"
+                    srcset="images/dog_c_scale,w_200.jpg 200w,
+                            images/dog_c_scale,w_604.jpg 604w,
+                            images/dog_c_scale,w_853.jpg 853w,
+                            images/dog_c_scale,w_1089.jpg 1089w,
+                            images/dog_c_scale,w_1291.jpg 1291w,
+                            images/dog_c_scale,w_1400.jpg 1400w"
+                    src="images/dog_c_scale,w_1400.jpg"
+                    alt="dog">
+            </picture>
+        </figure>
 
         <p>Paneer st. agur blue cheese bocconcini. The big cheese chalk and cheese cheese and biscuits cream cheese cheese triangles mascarpone everyone loves rubber cheese. Stinking bishop manchego the big cheese lancashire hard cheese the big cheese danish fontina squirty cheese. Cheesy feet croque monsieur boursin squirty cheese cheddar boursin boursin pepper jack. Squirty cheese halloumi camembert de normandie macaroni cheese.</p>
     </body>

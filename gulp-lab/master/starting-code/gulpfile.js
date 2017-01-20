@@ -16,8 +16,7 @@ limitations under the License.
 /*jshint node:true*/
 var gulp = require('gulp');
 var path = require('path');
-// TODO 2.1: Add the code to require Gulp
-// TODO 3.1: Add the code to require the uglify plugin
+var uglify = require('gulp-uglify');
 // TODO 4.1: Add the code to require sourcemaps and autoprefixer plugins
 // TODO 5.1: Add the code to require browserSync
 
@@ -25,7 +24,11 @@ var paths = {
   src: 'app/'
 };
 
-// TODO 3.2: Add the code for the Uglify task
+gulp.task('minify', function() {
+	gulp.src('scripts/main.js')
+		.pipe(uglify())
+		.pipe(gulp.dest('build'));
+});
 
 // TODO 4.2: Add the code for the processCSS task
 

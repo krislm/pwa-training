@@ -3,7 +3,133 @@
 /* TODO 2 - style the page */
 
 /* TODO 6 - lay out content in columns */
+/*=TODO 5.2*/
+/*.container .col {
+	width: 27%;
+	padding: 30px 3.15% 0;
+	float: left;
+	margin-bottom: -999px;
+	padding-bottom: 999px;
+}
+
+.container .col:nth-child(1) {
+	margin-left: 33.3%;
+	background: #eee;
+}
+
+.container .col:nth-child(2) {
+	margin-left: -66.3%;
+	background: #eee;
+}
+
+.container .col:nth-child(3) {
+	left: 0;
+	background: #eee;
+}
+
+.container p {
+	margin-bottom: 30px;
+}*/
 
 /* TODO 8 - include the flexbox class */
 
 /* TODO 9 - use a media query*/
+
+
+/*=TODO 4.2*/
+body {
+	font-family: Verdana, sans-serif;
+	font-size: 100%; /* Base Font Size */
+	line-height: 1.4;
+}
+
+h1 {
+	font-family: cursive;
+	font-size: 4rem;
+}
+
+h2 {
+	font-family: cursive;
+	font-size: 2.5rem;
+}
+
+/* TODO 6.1 - comment out rules that start with .container */
+
+/*.container {
+	margin: 0 3rem;
+	overflow: hidden;
+}*/
+/*was content in html not container*/
+
+/*Todo 7.2a*/
+.no-flexbox .container {
+	margin: 0 3rem;
+	overflow: hidden;
+}
+
+.no-flexbox .container .col {
+	width: 27%;
+	padding: 30px 3.15% 0;
+	float: left;
+	margin-bottom: -999px;
+	padding-bottom: 999px;
+}
+
+.no-flexbox .container .col:nth-child(1) {
+	margin-left: 33.3%;
+	background: #eee;
+}
+
+.no-flexbox .container .col:nth-child(2) {
+	margin-left: -66.3%;
+	background: #eee;
+}
+
+.no-flexbox .container .col:nth-child(3) {
+	left: 0;
+	background: #eee;
+}
+
+.no-flexbox .container p {
+	margin-bottom: 30px;
+}
+
+/* TODO 7.2b - add .flexbox to the rules that start with .container below */
+
+.flexbox .container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 3rem;
+	overflow: hidden;
+}
+
+.flexbox .container .col {
+	flex: 1;
+	padding: 1rem;
+}
+
+/*Todo 6.3*/
+@media screen and (max-width: 48rem) {
+	.flexbox .container {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		flex-flow: column;
+	}
+	
+	.flexbox .container .col:nth-child(1) {
+		order: 1;
+		color: rebeccapurple;
+	}
+	
+	.flexbox .container .col:nth-child(2) {
+		order: 2;
+		color: slategrey;
+	}
+	
+	.flexbox .container .col:nth-child(3) {
+		color: cornflowerblue;
+		order: 3;
+	}
+}

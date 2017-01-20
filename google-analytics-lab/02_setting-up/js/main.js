@@ -32,14 +32,76 @@ limitations under the License.
   purchaseButton.addEventListener('click', function() {
 
     // TODO Step 7: Send custom Google Analytics event
+	  ga('send', {
+		  hitType: 'event',
+		  eventCategory: 'products',
+		  eventAction: 'purchase',
+		  eventLabel: 'Summer products launch'
+	  });
 
   });
 
   // TODO Step 8a: Register the service worker
+	var registration; // Store service worker registration
+	navigator.serviceWorker.register('service-worker.js')
+		.then(function(reg) {
+			console.log('Service worker registered!', reg);
+			registration = reg;
+		})
+		.catch(function(error) {
+			console.log('Service Worker registration failed:', error);
+		});
 
   // TODO Step 8b: Add notifications
 
   // TODO Step 8c: Add manual notification trigger to button
+	
+	var subscription;
+	var isSubscribed = false;
+	var subscribeButton = document.getElementById('subscribe');
+    
+	subscribeButton.addEventListener('click', function() {
+		if (isSubscribed) {
+			unsubscribe();
+		} else {
+			subscribe();
+		}
+	});
+	
+	function subscribe() {
+		registration.pushManager.subscribe({userVisibleOnly: true})
+			.then(function(pushSubscription) {
+				subscription = pushSubscription;
+				console.log('Subscribed!', subscription);
+				ga('send', 'event', 'push', 'subscribe');
+				subscribeButton.textContent = 'Unsubscribe';
+				isSubscribed = true;
+			})
+			.catch(function(error) {
+				if (Notification.permission === 'denied') {
+					console.warn('Subscribe failed, notifications are blocked');
+					ga('send', 'event', 'push', 'subscribe-blocked');
+				} else {
+					console.warn('Error subscribing', error);
+					ga('send', 'event', 'push', 'subscribe-error');
+				}
+			});
+	}
+	
+	function unsubscribe() {
+		subscription.unsubscribe()
+			.then(function() {
+				console.log('Unsubscribed!');
+				ga('send', 'event', 'push', 'unsubscribe');
+				subscribeButton.textContent = 'Subscribe';
+				isSubscribed = false;
+			})
+			.catch(function(error) {
+				console.warn('Error unsubscribing', error);
+				ga('send', 'event', 'push', 'unsubscribe-error');
+				subscribeButton.textContent = 'Subscribe';
+			});
+	}
 
   // TODO Step 8d: Display manual notifications
 

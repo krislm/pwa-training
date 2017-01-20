@@ -15,3 +15,17 @@
 */
 // Does the browser support Service Workers?
 //TODO 6.1 Paste the code from section 6
+// Does the browser support Service Workers?
+if ('serviceWorker' in navigator) {
+	// If it does register the ServiceWorker. By default it's scoped to /
+	navigator.serviceWorker.register('./service-worker.js', {scope: './'})
+		.then(function(registration) {
+			// Log success to the console along with the scope this worker is registered to
+			console.log('Service Worker registration successful with scope: ',
+				registration.scope);
+		})
+		.catch(function(err) {
+			// Oh, no. Something happened
+			console.log('Service Worker registration failed: ', err);
+		});
+}
